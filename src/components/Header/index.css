@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background-color: #272727;
+}
+.web-logo {
+  width: 100px;
+}
+.paths {
+  display: flex;
+  align-items: center;
+}
+.image-list {
+  list-style-type: none;
+}
+.path {
+  color: white;
+  font-family: Roboto;
+  font-size: 15px;
+  margin: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.logout-button {
+  font-family: Roboto;
+  font-size: 15px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 10px;
+  background-color: #4f46e5;
+  font-weight: bold;
+  cursor: pointer;
+}

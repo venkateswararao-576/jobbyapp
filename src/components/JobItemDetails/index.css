@@ -1,0 +1,190 @@
+.job-detail-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  min-height: 100vh;
+}
+.jobcard {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 20px;
+  border-radius: 5px;
+  border: none;
+  list-style-type: none;
+  background-color: #121212;
+  text-decoration: none;
+  margin: 30px;
+}
+.logo-type {
+  display: flex;
+  align-items: center;
+}
+.company-logo {
+  width: 50px;
+  margin-right: 10px;
+}
+.type-rating {
+  display: flex;
+  flex-direction: column;
+}
+.company-name {
+  font-family: Roboto;
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+}
+.href {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.anchor-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.anchor-icon {
+  color: #4f46e5;
+  font-size: 25px;
+  margin-left: 5px;
+}
+.anchor {
+  color: #4f46e5;
+  padding: 5px;
+  font-size: 25px;
+}
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+.star {
+  color: #fbbf24;
+  font-size: 15px;
+  margin-right: 5px;
+}
+.rating {
+  font-family: Roboto;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+}
+.location-package {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.location-type {
+  display: flex;
+}
+.location {
+  display: flex;
+  align-items: center;
+}
+.locate-icon {
+  color: white;
+  font-size: 15px;
+  margin-right: 5px;
+}
+.location-name {
+  font-family: Roboto;
+  font-size: 12px;
+  color: #cbd5e1;
+  margin-right: 15px;
+}
+.package {
+  font-family: Roboto;
+  font-size: 18px;
+  color: white;
+}
+.descript-head {
+  font-family: Roboto;
+  font-size: 20px;
+  color: white;
+}
+.description {
+  font-family: Roboto;
+  font-size: 15px;
+  color: white;
+}
+.skill-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.skill-item {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  width: 300px;
+  margin: 20px 20px 25px 0px;
+}
+.skill-image {
+  width: 50px;
+  margin-right: 10px;
+}
+.life-of-company {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.company-descript {
+  width: 60%;
+  color: white;
+  font-family: Roboto;
+  font-size: 15px;
+}
+.company-life-image {
+  width: 35%;
+  border: none;
+  border-radius: 5px;
+}
+.similar-head {
+  color: white;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px;
+}
+.similar-list-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.failure-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #000000;
+}
+.fail-image {
+  width: 400px;
+}
+.error-head {
+  font-family: Roboto;
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+}
+.error-text {
+  font-family: Roboto;
+  font-size: 15px;
+  color: white;
+}
+.retry-button {
+  font-family: Roboto;
+  font-size: 15px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 7px 12px;
+  background-color: #4f46e5;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: center;
+}
