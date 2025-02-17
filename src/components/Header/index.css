@@ -4,6 +4,7 @@
   justify-content: space-between;
   padding: 10px 30px;
   background-color: #272727;
+  position: sticky;
 }
 .web-logo {
   width: 100px;

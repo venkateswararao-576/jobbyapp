@@ -1,3 +1,6 @@
+* {
+  text-decoration: none;
+}
 .job-detail-container {
   display: flex;
   flex-direction: column;

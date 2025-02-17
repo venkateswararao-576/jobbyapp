@@ -27,6 +27,29 @@ const employmentTypesList = [
   },
 ]
 
+const locationsList = [
+  {
+    label: 'Hyderabad',
+    locationId: 'HYDERABAD',
+  },
+  {
+    label: 'Bangalore',
+    locationId: 'BANGALORE',
+  },
+  {
+    label: 'Chennai',
+    locationId: 'CHENNAI',
+  },
+  {
+    label: 'Delhi',
+    locationId: 'DELHI',
+  },
+  {
+    label: 'Mumbai',
+    locationId: 'MUMBAI',
+  },
+]
+
 const salaryRangesList = [
   {
     salaryRangeId: '1000000',
@@ -62,6 +85,7 @@ class JobCards extends Component {
     employInfo: {},
     apistatuscard: apivalues.initial,
     workType: [],
+    locations: [],
     minPackage: '',
   }
 
@@ -128,10 +152,13 @@ class JobCards extends Component {
 
   sorttheProducts = async () => {
     this.setState({apistatuscard: apivalues.progress})
-    const {searchValue, minPackage, workType} = this.state
-
+    const {searchValue, minPackage, workType, locations} = this.state
     const token = Cookies.get('jwt_token')
-    const jobsApiurl = `https://apis.ccbp.in/jobs?employment_type=${workType}&minimum_package=${minPackage}&search=${searchValue}`
+    const jobsApiurl = `https://apis.ccbp.in/jobs?employment_type=${workType.join(
+      ',',
+    )}&minimum_package=${minPackage}&search=${searchValue}&location=${locations.join(
+      ',',
+    )}`
     const options = {
       headers: {
         authorization: `Bearer ${token}`,
@@ -157,6 +184,8 @@ class JobCards extends Component {
       } else if (data.jobs.length === 0) {
         this.setState({apistatuscard: apivalues.noProducts})
       }
+    } else {
+      this.setState({apistatuscard: apivalues.failure})
     }
   }
 
@@ -197,7 +226,7 @@ class JobCards extends Component {
     <div className="no-job-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
-        alt="no jobs"
+        alt="nojobs"
         className="no-job-image"
       />
       <h1 className="no-jobs">No Jobs Found</h1>
@@ -231,25 +260,52 @@ class JobCards extends Component {
 
   employtype = event => {
     const {workType} = this.state
-    const type = event.target.id
-
+    const type = event.target.value
     if (workType.length > 0) {
       const addemploy = workType.includes(type)
       if (addemploy === false) {
-        this.setState(prevstate => ({
-          workType: [prevstate.workType, type],
-        }))
+        this.setState(
+          prev => ({workType: [...prev.workType, type]}),
+          this.sorttheProducts,
+        )
       } else {
         const removeType = workType.filter(each => each !== type)
-        this.setState({workType: removeType})
+        this.setState({workType: removeType}, this.sorttheProducts)
       }
     } else {
-      this.setState({workType: type})
+      this.setState(
+        prev => ({workType: [...prev.workType, type]}),
+        this.sorttheProducts,
+      )
+    }
+  }
+
+  selectlocation = event => {
+    const {locations} = this.state
+    const type = event.target.value
+    if (locations.length > 0) {
+      const isin = locations.includes(type)
+      if (isin === false) {
+        this.setState(
+          prev => ({
+            locations: [...prev.locations, type],
+          }),
+          this.sorttheProducts,
+        )
+      } else {
+        const removelocation = locations.filter(each => each !== type)
+        this.setState({locations: removelocation}, this.sorttheProducts)
+      }
+    } else {
+      this.setState(
+        prev => ({locations: [...prev.locations, type]}),
+        this.sorttheProducts,
+      )
     }
   }
 
   minimumPackage = event => {
-    this.setState({minPackage: event.target.id})
+    this.setState({minPackage: event.target.id}, this.sorttheProducts)
   }
 
   retry = () => this.getProfileDetails()
@@ -328,6 +384,26 @@ class JobCards extends Component {
                       onChange={this.minimumPackage}
                     />
                     <label htmlFor={each.salaryRangeId} className="job-type">
+                      {each.label}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            </>
+            <>
+              <hr width="100%" />
+              <h1 className="heading">Locations</h1>
+              <ul className="list-items">
+                {locationsList.map(each => (
+                  <li className="list" key={each.label}>
+                    <input
+                      type="checkbox"
+                      value={each.locationId}
+                      className="check"
+                      id={each.locationId}
+                      onChange={this.selectlocation}
+                    />
+                    <label htmlFor={each.locationId} className="job-type">
                       {each.label}
                     </label>
                   </li>

@@ -9,7 +9,7 @@ const Header = props => {
     history.replace('/login')
   }
   return (
-    <div className="header">
+    <nav className="header">
       <ul>
         <Link to="/">
           <li className="image-list">
@@ -32,7 +32,7 @@ const Header = props => {
       <button type="button" className="logout-button" onClick={logoutpage}>
         Logout
       </button>
-    </div>
+    </nav>
   )
 }
 export default withRouter(Header)

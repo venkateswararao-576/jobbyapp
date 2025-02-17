@@ -18,6 +18,7 @@ class Login extends Component {
     Cookies.set('jwt_token', token, {expires: 30})
     const {history} = this.props
     history.replace('/')
+    this.setState({username: '', password: '', errormsg: ''})
   }
 
   onfailure = msg => {
@@ -37,7 +38,6 @@ class Login extends Component {
     const data = await response.json()
     if (response.ok) {
       this.onSuccess(data.jwt_token)
-      this.setState({username: '', password: '', errormsg: ''})
     } else {
       this.onfailure(data.error_msg)
     }
